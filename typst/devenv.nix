@@ -24,5 +24,11 @@ in
     '';
   };
 
-  packages = [ pkgs.typstfmt ];
+  packages = [ pkgs.typstyle ];
+
+  git-hooks.hooks.style = {
+    enable = true;
+    entry = "typstyle -i";
+    files = "\\.typ$";
+  };
 }
