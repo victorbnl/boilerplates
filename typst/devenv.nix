@@ -6,11 +6,11 @@ in
   languages.typst = {
     enable = true;
     package = pkgs-unstable.typst;
-  };
 
-  env.TYPST_FONT_PATHS = lib.concatStringsSep ":" [
-    "${pkgs.liberation_ttf}/share/fonts/truetype"
-  ];
+    fontPaths = [
+      "${pkgs.liberation_ttf}/share/fonts/truetype"
+    ];
+  };
 
   scripts = {
     build.exec = ''
@@ -23,4 +23,6 @@ in
       typst watch --root . --ignore-system-fonts src/main.typ output/document.pdf
     '';
   };
+
+  packages = [ pkgs.typstfmt ];
 }
